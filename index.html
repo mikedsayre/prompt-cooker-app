@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/images/Prompt-Cooker-App-Your-Recipe-For-The-Perfect-Prompts-64px.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompt Cooker - Your Recipe for Perfect Prompts</title>
+    <meta name="description" content="Prompt Cooker is an AI-powered tool that helps you cook up the perfect prompt. Turn your raw ideas into a five-star recipe for any AI system.">
+    
+    <!-- Social Media / Open Graph -->
+    <meta property="og:title" content="Prompt Cooker - Your Recipe for Perfect Prompts">
+    <meta property="og:description" content="Turn your raw ideas into a five-star recipe for any AI system.">
+    <!-- TODO: Replace this placeholder image with your own 1200x630 image -->
+    <meta property="og:image" content="https://i.imgur.com/gANmB4j.png">
+    <meta property="og:url" content="https://promptcooker.app">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Prompt Cooker - Your Recipe for Perfect Prompts">
+    <meta name="twitter:description" content="Turn your raw ideas into a five-star recipe for any AI system.">
+    <!-- TODO: Replace this placeholder image with your own 1200x630 image -->
+    <meta name="twitter:image" content="https://i.imgur.com/gANmB4j.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://promptcooker.app" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Google Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+    <style>
+      :root {
+        --color-bg: #18181b; /* Zinc 900 */
+        --color-surface: #27272a; /* Zinc 800 */
+        --color-primary: #f97316; /* Orange 500 */
+        --color-secondary: #ea580c; /* Orange 600 */
+        --color-text: #e4e4e7; /* Zinc 200 */
+        --color-subtle: #a1a1aa; /* Zinc 400 */
+        --color-border: #3f3f46; /* Zinc 700 */
+        --color-glow: rgba(249, 115, 22, 0.4);
+        --color-highlight: var(--color-primary);
+
+        --color-code-bg: #111113;
+        --color-code-text: #e4e4e7;
+        --color-input-bg: var(--color-code-bg);
+
+        --color-grill-bg: rgba(20, 20, 22, 0.7);
+        --color-grill-pattern: rgba(0, 0, 0, 0.1);
+        --color-wood-bg: #1a1612;
+        --color-wood-pattern: rgba(0, 0, 0, 0.15);
+
+        --slider-thumb-size: 24px;
+      }
+      html.light {
+        --color-bg: #fff7ed; /* Orange 50 */
+        --color-surface: #ffffff;
+        --color-primary: #f97316; /* Orange 500 */
+        --color-secondary: #ea580c; /* Orange 600 */
+        --color-text: #18181b; /* Zinc 900 */
+        --color-subtle: #71717a; /* Zinc 500 */
+        --color-border: #e7e5e4; /* Stone 200 */
+        --color-glow: rgba(249, 115, 22, 0.4);
+        --color-highlight: #c2410c; /* Orange 700 - for high contrast */
+        
+        --color-code-bg: #f8f8f8;
+        --color-code-text: #18181b; /* Zinc 900 */
+        --color-input-bg: #f8fafc; /* Cool Gray 50 */
+        
+        --color-grill-bg: #f8fafc; /* Cool Gray 50 */
+        --color-grill-pattern: rgba(0, 0, 0, 0.05);
+        --color-wood-bg: #fafafa; /* Neutral 50 */
+        --color-wood-pattern: rgba(0, 0, 0, 0.05);
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .highlight-glow {
+        color: var(--color-highlight);
+        text-shadow: 0 0 8px var(--color-glow);
+        font-weight: 500;
+      }
+      .grill-bg {
+          background-color: var(--color-grill-bg);
+          background-image:
+              linear-gradient(45deg, var(--color-grill-pattern) 25%, transparent 25%),
+              linear-gradient(-45deg, var(--color-grill-pattern) 25%, transparent 25%),
+              linear-gradient(45deg, transparent 75%, var(--color-grill-pattern) 75%),
+              linear-gradient(-45deg, transparent 75%, var(--color-grill-pattern) 75%);
+          background-size: 20px 20px;
+          background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      }
+      .wood-grain-bg {
+        background-color: var(--color-wood-bg);
+        background-image: repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 40px,
+          var(--color-wood-pattern) 40px,
+          var(--color-wood-pattern) 41px,
+          transparent 41px,
+          transparent 60px,
+          var(--color-wood-pattern) 60px,
+          var(--color-wood-pattern) 62px
+        );
+      }
+
+      /* Custom Slider Styles */
+      .custom-slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 8px;
+        background: var(--color-border);
+        border-radius: 5px;
+        outline: none;
+        transition: opacity .2s;
+      }
+      .custom-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: var(--slider-thumb-size);
+        height: var(--slider-thumb-size);
+        background-color: var(--color-primary);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 60%;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: transform .2s ease;
+      }
+      .custom-slider::-moz-range-thumb {
+        width: var(--slider-thumb-size);
+        height: var(--slider-thumb-size);
+        background-color: var(--color-primary);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 60%;
+        cursor: pointer;
+        border-radius: 50%;
+        border: none;
+        transition: transform .2s ease;
+      }
+      .custom-slider:hover::-webkit-slider-thumb { transform: scale(1.1); }
+      .custom-slider:hover::-moz-range-thumb { transform: scale(1.1); }
+
+      /* Thematic Thumbs */
+      .custom-slider.slider-thumb-heat::-webkit-slider-thumb { background-image: var(--thumb-heat-icon); }
+      .custom-slider.slider-thumb-portion::-webkit-slider-thumb { background-image: var(--thumb-portion-icon); }
+      .custom-slider.slider-thumb-heat::-moz-range-thumb { background-image: var(--thumb-heat-icon); }
+      .custom-slider.slider-thumb-portion::-moz-range-thumb { background-image: var(--thumb-portion-icon); }
+
+      /* Animation for icons */
+      .icon-spin-hover {
+        transition: transform 0.4s ease-in-out;
+      }
+      .icon-spin-hover:hover {
+        transform: rotate(360deg);
+      }
+
+      /* Animated Theme Toggle Icon */
+      .animated-theme-icon g.sun-rays,
+      .animated-theme-icon .sun-main,
+      .animated-theme-icon .moon-mask-circle {
+          transition: transform 0.4s cubic-bezier(0.45, 0, 0.55, 1);
+      }
+      .animated-theme-icon .sun-rays {
+          transform-origin: center;
+          transform: rotate(0deg);
+          opacity: 1;
+          transition: transform 0.4s cubic-bezier(0.45, 0, 0.55, 1), opacity 0.2s ease-out;
+      }
+      .animated-theme-icon.dark .sun-rays {
+          transform: rotate(-45deg);
+          opacity: 0;
+      }
+      .animated-theme-icon .moon-mask-circle {
+          transform: translateX(100%);
+      }
+      .animated-theme-icon.dark .moon-mask-circle {
+          transform: translateX(0);
+      }
+
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['Fira Code', 'monospace'],
+            },
+            colors: {
+              'brand-bg': 'var(--color-bg)',
+              'brand-surface': 'var(--color-surface)',
+              'brand-primary': 'var(--color-primary)',
+              'brand-secondary': 'var(--color-secondary)',
+              'brand-text': 'var(--color-text)',
+              'brand-subtle': 'var(--color-subtle)',
+              'brand-border': 'var(--color-border)',
+              'brand-code-bg': 'var(--color-code-bg)',
+              'brand-code-text': 'var(--color-code-text)',
+              'brand-input-bg': 'var(--color-input-bg)',
+            },
+            fontSize: { /* Explicitly define text-xl to set a matching line-height */
+                'xl': ['1.25rem', { lineHeight: '1.25rem' }], /* 20px / 20px */
+            },
+            animation: {
+                'gradient-x': 'gradient-x 5s ease infinite',
+                'fade-in-down': 'fade-in-down 0.3s ease-out forwards',
+                'fade-in': 'fade-in 0.3s ease-out forwards',
+                'scale-up': 'scale-up 0.2s ease-out forwards',
+                'flicker-glow': 'flicker-glow 0.7s ease-in-out',
+            },
+            keyframes: {
+                'gradient-x': {
+                    '0%, 100%': {
+                        'background-size':'200% 200%',
+                        'background-position': 'left center'
+                    },
+                    '50%': {
+                        'background-size':'200% 200%',
+                        'background-position': 'right center'
+                    }
+                },
+                'fade-in-down': {
+                    '0%': {
+                        opacity: '0',
+                        transform: 'translateY(-10px)'
+                    },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'translateY(0)'
+                    },
+                },
+                'fade-in': {
+                    'from': { opacity: '0' },
+                    'to': { opacity: '1' },
+                },
+                'scale-up': {
+                  'from': { opacity: '0.9', transform: 'scale(0.95)' },
+                  'to': { opacity: '1', transform: 'scale(1)' },
+                },
+                'flicker-glow': {
+                    '0%, 100%': {
+                        filter: 'drop-shadow(0 0 0px transparent)',
+                        transform: 'scale(1)'
+                    },
+                    '50%': {
+                        filter: 'drop-shadow(0 0 8px var(--color-glow))',
+                        transform: 'scale(1.05)'
+                    }
+                },
+            },
+            boxShadow: {
+              'glow-primary': '0 0 15px var(--color-glow)',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.7.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-brand-bg text-brand-text transition-colors duration-300">
+    <div id="root"></div>
+  </body>
+</html>

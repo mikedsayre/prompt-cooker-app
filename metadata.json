@@ -1,0 +1,8 @@
+{
+  "name": "Prompt Cooker",
+  "description": "An AI-powered tool that helps you cook up the perfect prompt. Turn your raw ideas into a five-star recipe for any AI system.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "prompt": ""
+}

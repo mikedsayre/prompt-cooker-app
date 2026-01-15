@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeToggle } from './ThemeToggle';
 import { ColorPicker } from './ui/ColorPicker';
 import { HistoryIcon, QuestionMarkIcon } from './ui/Icons';
+import { LOGO_PATH } from '../constants';
 
 interface HeaderProps {
     onToggleHistory: () => void;
@@ -18,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleHistory, onToggleHelp })
                             Prompt Cooker
                         </h1>
                         <img 
-                            src="/images/logo.png"
+                            src={LOGO_PATH}
                             alt="Prompt Cooker Mascot"
                             className="w-10 h-10 icon-spin-hover"
                         />
@@ -28,19 +29,19 @@ export const Header: React.FC<HeaderProps> = ({ onToggleHistory, onToggleHelp })
                     <ColorPicker />
                     <button
                         onClick={onToggleHistory}
-                        className="p-2 rounded-full bg-brand-surface hover:bg-brand-border text-brand-subtle hover:text-brand-text transition-colors duration-200"
+                        className="p-2 rounded-full bg-brand-surface hover:bg-brand-border text-brand-subtle hover:text-brand-text transition-colors duration-200 flex items-center justify-center"
                         aria-label="View prompt history"
                         title="View Recipe Book"
                     >
-                        <HistoryIcon className="w-5 h-5" />
+                        <HistoryIcon className="text-xl" />
                     </button>
                     <button
                         onClick={onToggleHelp}
-                        className="p-2 rounded-full bg-brand-surface hover:bg-brand-border text-brand-subtle hover:text-brand-text transition-colors duration-200"
+                        className="p-2 rounded-full bg-brand-surface hover:bg-brand-border text-brand-subtle hover:text-brand-text transition-colors duration-200 flex items-center justify-center"
                         aria-label="Open help guide"
                         title="Open Guide"
                     >
-                        <QuestionMarkIcon className="w-5 h-5 text-brand-primary" />
+                        <QuestionMarkIcon className="text-xl text-brand-primary" />
                     </button>
                     <ThemeToggle />
                 </div>

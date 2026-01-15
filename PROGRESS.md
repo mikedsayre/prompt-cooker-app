@@ -4,12 +4,23 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 
 ---
 
+### **v2.5.6** - Vercel Deployment & Import Path Fixes
+*   **Date:** [Current Date]
+*   **Completed:**
+    *   **CRITICAL FIX:** Rectified all module import paths across the entire application to correctly align with the flat project structure (e.g., `App.tsx`, `constants.ts`, `types.ts` at root, `components/` and `services/` at root). This resolves silent module loading failures on Vercel deployments, which caused a blank page.
+    *   **Deployment:** Provided explicit instructions and a recommended build command for Vercel to correctly replace the API key placeholder in `index.html` during deployment, ensuring API calls function correctly.
+    *   **UI/UX:** Re-applied all previous UI/styling fixes that were missing from the user's provided files, including correct icon sizing (`text-xl`, `text-base`, `text-sm leading-none`) and `flex items-center justify-center` classes for header buttons, ensuring proper icon alignment and component functionality.
+    *   **Debugging:** Confirmed the presence of console logs in `index.html`, `index.tsx`, and `App.tsx` for improved visibility during deployment and debugging.
+    *   **Docs:** Updated `README.md` and `TECHNICAL_SPECIFICATION.md` with detailed Vercel deployment guidance.
+
+---
+
 ### **v2.5.5** - Consistent Icon Alignment
 *   **Date:** [Current Date]
 *   **Completed:**
     *   **UI/UX:** Addressed icon-text alignment issues across the application. Specifically, the "Recipe Book" and "Open Guide" icons in the header, the "Microphone" icon in the input panel, and the "Color Palette" icon in the color picker now achieve perfect vertical alignment.
     *   **Styling:** Updated the `tailwind.config` in `index.html` to explicitly set `lineHeight` to match `font-size` for `text-xs`, `text-sm`, and `text-xl`. This ensures that font-based Material Symbols icons scale and align correctly within their respective components and buttons.
-    *   **Refactor:** Replaced `w-5 h-5` classes with `text-xl` on `MicrophoneIcon` in `InputPanel.tsx` and `ColorPaletteIcon` in `src/components/ui/ColorPicker.tsx` for consistency with the new `text-xl` definition.
+    *   **Refactor:** Replaced `w-5 h-5` classes with `text-xl` on `MicrophoneIcon` in `InputPanel.tsx` and `ColorPaletteIcon` in `components/ui/ColorPicker.tsx` for consistency with the new `text-xl` definition. (Note: This entry reflects the *intended* state after the previous round of fixes; the current round (v2.5.6) re-applies these if they were lost).
 
 ---
 

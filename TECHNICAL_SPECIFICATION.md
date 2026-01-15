@@ -46,18 +46,18 @@ The project follows a standard component-based architecture.
 -   `index.html`: The single HTML entry point. Loads fonts, the Tailwind CSS CDN, the `importmap`, and sets up root CSS variables for theming. Also contains a script for `process.env` shim for API key injection.
 -   `index.tsx`: The React application entry point. Renders the `App` component into the DOM.
 -   `App.tsx`: The main component. Manages the application's top-level state and orchestrates the interaction between the other components.
--   `src/components`: Contains all React components.
-    -   `src/components/ui`: Contains generic, reusable UI components like `Card.tsx`, `Tooltip.tsx`, `ColorPicker.tsx`, and `Icons.tsx`.
-    -   `src/components/Header.tsx`: Top navigation bar.
-    -   `src/components/InputPanel.tsx`: The left-side "Grill Station".
-    -   `src/components/OutputPanel.tsx`: The right-side panel for displaying the "Cooked Prompt". Its header includes a permanent flame icon that animates on success, along with Share/Copy buttons. The output area is an "editable" textarea with a `div` overlay to simulate highlighting.
-    -   `src/components/TuningPanel.tsx`: "The Spice Rack" - controls for adjusting prompt parameters.
-    -   `src/components/HistoryPanel.tsx`: The "Recipe Book" slide-out panel.
-    -   `src/components/HelpModal.tsx`: The pop-up guide.
--   `src/services`: Houses the logic for communicating with external APIs.
-    -   `src/services/geminiService.ts`: Contains all logic for interacting with the Google Gemini API.
--   `src/types.ts`: Defines shared TypeScript types.
--   `src/constants.ts`: Stores shared, static data.
+-   `components`: Contains all React components.
+    -   `components/ui`: Contains generic, reusable UI components like `Card.tsx`, `Tooltip.tsx`, `ColorPicker.tsx`, and `Icons.tsx`.
+    -   `components/Header.tsx`: Top navigation bar.
+    -   `components/InputPanel.tsx`: The left-side "Grill Station".
+    -   `components/OutputPanel.tsx`: The right-side panel for displaying the "Cooked Prompt". Its header includes a permanent flame icon that animates on success, along with Share/Copy buttons. The output area is an "editable" textarea with a `div` overlay to simulate highlighting.
+    -   `components/TuningPanel.tsx`: "The Spice Rack" - controls for adjusting prompt parameters.
+    -   `components/HistoryPanel.tsx`: The "Recipe Book" slide-out panel.
+    -   `components/HelpModal.tsx`: The pop-up guide.
+-   `services`: Houses the logic for communicating with external APIs.
+    -   `services/geminiService.ts`: Contains all logic for interacting with the Google Gemini API.
+-   `types.ts`: Defines shared TypeScript types.
+-   `constants.ts`: Stores shared, static data.
 -   `vercel.json`: Vercel-specific configuration for headers (MIME types) and environment variables.
 
 ---
@@ -72,9 +72,9 @@ The project follows a standard component-based architecture.
 
 ---
 
-## 6. API Integration (`src/services/geminiService.ts`)
+## 6. API Integration (`services/geminiService.ts`)
 
--   **Authentication:** The client-side application expects the Gemini API key to be available via `process.env.API_KEY`. For buildless deployments on platforms like Vercel, `index.html` includes a shim script that sets `window.process.env.API_KEY` using a placeholder that needs to be replaced with the actual environment variable during the Vercel build/deployment process.
+-   **Authentication:** The client-side application expects the Gemini API key to be available via `process.env.API_KEY`. For buildless deployments on platforms like Vercel, `index.html` includes a shim script that sets `window.process.env.API_KEY` using a placeholder that needs to be replaced with the actual environment variable during the Vercel build/deployment process. The recommended Vercel build command for this is `sed -i "s|__VERCEL_GEMINI_API_KEY__|$GEMINI_API_KEY|g" index.html && npx vercel build --prebuilt`.
 -   **`constructSystemPrompt`:** This function dynamically builds a detailed system instruction prompt based on the user's "Spice Rack" settings. This is the core of the "recipe writing" process.
 -   **`generateOptimizedPrompt`:** This function takes the user's input and tuning options and makes a single call to the Gemini API. It uses `constructSystemPrompt` to build a detailed set of meta-instructions that guide the AI to generate a single, high-quality, optimized prompt (the "prompt recipe"). It then returns this final prompt to be displayed to the user. The application's purpose is to *create* prompts, not execute them.
 ---

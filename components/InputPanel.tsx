@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { TuningOptions } from '../types';
-import { TuningPanel } from './TuningPanel';
+import { TuningPanel } from '../components/TuningPanel';
 import { Card } from './ui/Card';
 import { FlameIcon, InfoIcon, MicrophoneIcon } from './ui/Icons';
 
@@ -171,7 +171,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({
                             } disabled:opacity-50 disabled:cursor-not-allowed`}
                             aria-label={isListening ? "Stop voice input" : "Start voice input"}
                         >
-                            <MicrophoneIcon className="w-5 h-5" />
+                            <MicrophoneIcon className="text-xl" />
                         </button>
                     )}
                 </div>
@@ -183,16 +183,16 @@ export const InputPanel: React.FC<InputPanelProps> = ({
                     >
                         {isLoading ? (
                             <>
-                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white leading-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                 </svg>
-                                Cooking...
+                                <span className="leading-none">Cooking...</span>
                             </>
                         ) : (
                         <>
-                            <FlameIcon className="w-5 h-5 mr-2" />
-                            Cook My Prompt
+                            <FlameIcon className="w-5 mr-2 text-base leading-none" />
+                            <span className="font-bold leading-none">Cook My Prompt</span>
                         </>
                         )}
                     </button>

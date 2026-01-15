@@ -97,10 +97,10 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({ isOpen, onClose, his
                                             <p className="font-semibold text-brand-text truncate my-1" title={item.userInput}>{item.userInput}</p>
                                             <div className="flex items-center justify-end gap-2 mt-2">
                                                 <button onClick={() => onLoad(item)} className="flex items-center text-xs py-1 px-2 rounded bg-brand-primary/10 text-brand-primary hover:bg-brand-primary hover:text-white transition-all">
-                                                    <LoadIcon className="text-base mr-1"/> Load
+                                                    <LoadIcon className="text-base mr-1"/> <span className="leading-none">Load</span>
                                                 </button>
                                                 <button onClick={() => onDelete(item.id)} className="flex items-center text-xs py-1 px-2 rounded bg-brand-border text-brand-subtle hover:bg-red-500 hover:text-white transition-all">
-                                                    <DeleteIcon className="text-base mr-1"/> Delete
+                                                    <DeleteIcon className="text-base mr-1"/> <span className="leading-none">Delete</span>
                                                 </button>
                                             </div>
                                         </li>

@@ -33,7 +33,7 @@ export const ThemeToggle: React.FC = () => {
     return (
         <button
             onClick={toggleTheme}
-            className="p-2 rounded-full bg-brand-surface hover:bg-brand-border text-brand-subtle hover:text-brand-text transition-colors duration-200"
+            className="p-2 rounded-full bg-brand-surface hover:bg-brand-border text-brand-subtle hover:text-brand-text transition-colors duration-200 flex items-center justify-center"
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
         >
             <AnimatedThemeIcon theme={theme} className="w-5 h-5" />

@@ -62,28 +62,25 @@ export const ColorPicker: React.FC = () => {
         setColor(e.target.value);
     };
     
-    const openColorPicker = () => {
-        inputRef.current?.click();
-    };
-
+    // The button itself will trigger the hidden input.
+    // The input is positioned to cover the button for better UX.
     return (
-        <div className="relative">
-            <button
-                onClick={openColorPicker}
-                className="p-2 rounded-full bg-brand-surface hover:bg-brand-border transition-colors duration-200"
-                aria-label="Choose theme color"
-                title="Choose theme color"
-            >
-                <ColorPaletteIcon className="w-5 h-5" />
-            </button>
+        <button
+            type="button"
+            onClick={() => inputRef.current?.click()}
+            className="p-2 rounded-full bg-brand-surface hover:bg-brand-border transition-colors duration-200 relative overflow-hidden flex items-center justify-center"
+            aria-label="Choose theme color"
+            title="Choose theme color"
+        >
+            <ColorPaletteIcon className="text-xl" />
             <input
                 ref={inputRef}
                 type="color"
                 value={color}
                 onChange={handleColorChange}
-                className="absolute top-0 left-0 w-0 h-0 opacity-0"
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" // Make input cover button
                 aria-hidden="true"
             />
-        </div>
+        </button>
     );
 };

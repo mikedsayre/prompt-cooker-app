@@ -1,5 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
-import type { TuningOptions } from '../src/types';
+import type { TuningOptions } from '../types';
 
 // Lazily initialize to avoid crashing the app on load if the API key is missing.
 let ai: GoogleGenAI | null = null;

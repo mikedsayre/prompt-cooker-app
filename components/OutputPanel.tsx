@@ -131,12 +131,12 @@ export const OutputPanel: React.FC<OutputPanelProps> = ({ prompt, isLoading, err
                 {prompt && !isLoading && !error && (
                     <div className="flex items-center gap-2 flex-shrink-0">
                          <button onClick={handleShare} className={buttonClass}>
-                            {isShareCopied ? <CheckIcon className="w-5 h-5 text-green-400" /> : <ShareIcon className="w-5 h-5" />}
-                            <span className="text-sm font-medium">{isShareCopied ? 'Link Copied!' : 'Share'}</span>
+                            {isShareCopied ? <CheckIcon className="w-5 text-sm text-green-400 leading-none" /> : <ShareIcon className="w-5 text-sm leading-none" />}
+                            <span className="text-sm font-medium leading-none">{isShareCopied ? 'Link Copied!' : 'Share'}</span>
                         </button>
                         <button onClick={handleCopy} className={buttonClass}>
-                            {isCopied ? <CheckIcon className="w-5 h-5 text-green-400" /> : <CopyIcon className="w-5 h-5" />}
-                            <span className="text-sm font-medium">{isCopied ? 'Copied!' : 'Copy'}</span>
+                            {isCopied ? <CheckIcon className="w-5 text-sm text-green-400 leading-none" /> : <CopyIcon className="w-5 text-sm leading-none" />}
+                            <span className="text-sm font-medium leading-none">{isCopied ? 'Copied!' : 'Copy'}</span>
                         </button>
                     </div>
                 )}

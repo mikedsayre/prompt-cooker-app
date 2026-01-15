@@ -1,12 +1,12 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Header } from './src/components/Header';
-import { InputPanel } from './src/components/InputPanel';
-import { OutputPanel } from './src/components/OutputPanel';
-import { generateOptimizedPrompt } from './src/services/geminiService';
-import type { TuningOptions, HistoryItem, SharedRecipe } from './src/types';
-import { DEFAULT_TUNING_OPTIONS, LOGO_PATH } from './src/constants';
-import { HistoryPanel } from './src/components/HistoryPanel';
-import { HelpModal } from './src/components/HelpModal';
+import { Header } from './components/Header';
+import { InputPanel } from './components/InputPanel';
+import { OutputPanel } from './components/OutputPanel';
+import { generateOptimizedPrompt } from './services/geminiService';
+import type { TuningOptions, HistoryItem, SharedRecipe } from './types';
+import { DEFAULT_TUNING_OPTIONS, LOGO_PATH } from './constants';
+import { HistoryPanel } from './components/HistoryPanel';
+import { HelpModal } from './components/HelpModal';
 
 console.log('App.tsx started'); // Debugging log
 

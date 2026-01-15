@@ -1,5 +1,5 @@
 
-import type { Tone, Format, TuningOptions } from './src/types';
+import type { Tone, Format, TuningOptions } from './types';
 
 export const TONES: Tone[] = ['Professional', 'Casual', 'Formal', 'Humorous', 'Empathetic'];
 export const FORMATS: Format[] = ['Auto', 'Paragraph', 'Bullet Points', 'JSON', 'Markdown Table'];

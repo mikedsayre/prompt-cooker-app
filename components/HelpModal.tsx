@@ -1,5 +1,6 @@
 import React from 'react';
 import { CloseIcon } from './ui/Icons';
+import { LOGO_PATH } from '../constants'; // Import LOGO_PATH
 
 interface HelpModalProps {
     isOpen: boolean;
@@ -36,7 +37,14 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
                     aria-labelledby="help-modal-title"
                 >
                     <header className="p-4 flex items-center justify-between border-b border-brand-border flex-shrink-0">
-                        <h2 id="help-modal-title" className="text-xl font-semibold text-brand-text">Prompt Cooker Guide</h2>
+                        <div className="flex items-center gap-2">
+                            <img 
+                                src={LOGO_PATH}
+                                alt="Prompt Cooker Logo"
+                                className="w-8 h-8"
+                            />
+                            <h2 id="help-modal-title" className="text-xl font-semibold text-brand-text">Prompt Cooker Guide</h2>
+                        </div>
                         <button onClick={onClose} className="p-1 rounded-full text-brand-subtle hover:bg-brand-border hover:text-brand-text transition-colors" aria-label="Close guide">
                             <CloseIcon />
                         </button>

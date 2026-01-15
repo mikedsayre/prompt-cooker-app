@@ -1,4 +1,5 @@
 
+
 export type Tone = 'Professional' | 'Casual' | 'Formal' | 'Humorous' | 'Empathetic';
 export type Format = 'Auto' | 'Paragraph' | 'Bullet Points' | 'JSON' | 'Markdown Table';
 

@@ -2,6 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      console.log('index.html loaded (head)');
+      // Shim process.env for client-side buildless apps, injecting API_KEY from Vercel env.
+      // Vercel should be configured to replace __VERCEL_GEMINI_API_KEY__ with the actual API key.
+      window.process = window.process || {};
+      window.process.env = window.process.env || {};
+      window.process.env.API_KEY = '__VERCEL_GEMINI_API_KEY__'; // Placeholder for Vercel injection
+      console.log('API_KEY shimmed:', !!window.process.env.API_KEY);
+    </script>
     <link rel="icon" type="image/png" href="/images/Prompt-Cooker-App-Your-Recipe-For-The-Perfect-Prompts-64px.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prompt Cooker - Your Recipe for Perfect Prompts</title>

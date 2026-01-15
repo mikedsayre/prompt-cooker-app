@@ -1,5 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
-import type { TuningOptions } from '../types';
+import type { TuningOptions } from '../src/types';
 
 // Lazily initialize to avoid crashing the app on load if the API key is missing.
 let ai: GoogleGenAI | null = null;
@@ -12,6 +12,7 @@ function getAiClient(): GoogleGenAI {
     if (ai) {
         return ai;
     }
+    // Access process.env.API_KEY, which is shimmed by index.html for client-side
     if (!process.env.API_KEY) {
         // This error is caught by generateOptimizedPrompt and displayed gracefully in the UI.
         throw new Error("API_KEY_MISSING: The API_KEY environment variable is not set.");

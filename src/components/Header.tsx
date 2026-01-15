@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeToggle } from './ThemeToggle';
+import { ThemeToggle } from '../components/ThemeToggle';
 import { ColorPicker } from './ui/ColorPicker';
 import { HistoryIcon, QuestionMarkIcon } from './ui/Icons';
 import { LOGO_PATH } from '../constants';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { TuningOptions } from '../types';
-import { TuningPanel } from './TuningPanel';
+import { TuningPanel } from '../components/TuningPanel';
 import { Card } from './ui/Card';
 import { FlameIcon, InfoIcon, MicrophoneIcon } from './ui/Icons';
 

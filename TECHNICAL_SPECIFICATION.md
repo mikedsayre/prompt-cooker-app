@@ -50,7 +50,7 @@ The project follows a standard component-based architecture.
     -   `/ui`: Contains generic, reusable UI components like `Card.tsx`, `Tooltip.tsx`, `ColorPicker.tsx`, and `Icons.tsx`.
     -   `Header.tsx`: Top navigation bar.
     -   `InputPanel.tsx`: The left-side "Grill Station".
-    -   `OutputPanel.tsx`: The right-side panel for displaying the "Cooked Prompt". Its header includes a permanent flame icon that animates on success, along with Share/Copy buttons. The output area is an editable textarea with a `div` overlay to simulate highlighting.
+    -   `OutputPanel.tsx`: The right-side panel for displaying the "Cooked Prompt". Its header includes a permanent flame icon that animates on success, along with Share/Copy buttons. The output area is an "editable" textarea with a `div` overlay to simulate highlighting.
     -   `TuningPanel.tsx`: "The Spice Rack" - controls for adjusting prompt parameters.
     -   `HistoryPanel.tsx`: The "Recipe Book" slide-out panel.
     -   `HelpModal.tsx`: The pop-up guide.
@@ -82,3 +82,4 @@ The project follows a standard component-based architecture.
 
 -   **Engine:** Tailwind CSS.
 -   **CSS Variables:** The core color palette is defined using CSS variables in `index.html`, allowing for easy theme switching (Light/Dark and custom accent colors). The theme is inspired by a "BBQ" aesthetic (charcoal, orange).
+-   **Icon Alignment:** To ensure precise vertical alignment for font-based icons (Material Symbols), the Tailwind CSS `fontSize` utility classes (`text-xs`, `text-sm`, `text-xl`) are explicitly configured in `index.html` to have a `lineHeight` that precisely matches their `font-size`. This prevents vertical misalignment caused by default browser line heights.

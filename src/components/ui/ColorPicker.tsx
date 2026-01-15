@@ -72,7 +72,7 @@ export const ColorPicker: React.FC = () => {
             aria-label="Choose theme color"
             title="Choose theme color"
         >
-            <ColorPaletteIcon className="w-5 h-5" />
+            <ColorPaletteIcon className="text-xl" />
             <input
                 ref={inputRef}
                 type="color"

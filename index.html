@@ -211,7 +211,9 @@
               'brand-code-text': 'var(--color-code-text)',
               'brand-input-bg': 'var(--color-input-bg)',
             },
-            fontSize: { /* Explicitly define text-xl to set a matching line-height */
+            fontSize: { /* Explicitly define text sizes to set a matching line-height for better icon alignment */
+                'xs': ['0.75rem', { lineHeight: '0.75rem' }], /* 12px / 12px */
+                'sm': ['0.875rem', { lineHeight: '0.875rem' }], /* 14px / 14px */
                 'xl': ['1.25rem', { lineHeight: '1.25rem' }], /* 20px / 20px */
             },
             animation: {

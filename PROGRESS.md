@@ -4,6 +4,15 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 
 ---
 
+### **v2.5.5** - Consistent Icon Alignment
+*   **Date:** [Current Date]
+*   **Completed:**
+    *   **UI/UX:** Addressed icon-text alignment issues across the application. Specifically, the "Recipe Book" and "Open Guide" icons in the header, the "Microphone" icon in the input panel, and the "Color Palette" icon in the color picker now achieve perfect vertical alignment.
+    *   **Styling:** Updated the `tailwind.config` in `index.html` to explicitly set `lineHeight` to match `font-size` for `text-xs`, `text-sm`, and `text-xl`. This ensures that font-based Material Symbols icons scale and align correctly within their respective components and buttons.
+    *   **Refactor:** Replaced `w-5 h-5` classes with `text-xl` on `MicrophoneIcon` in `InputPanel.tsx` and `ColorPaletteIcon` in `src/components/ui/ColorPicker.tsx` for consistency with the new `text-xl` definition.
+
+---
+
 ### **v2.5.4** - Example Prompt & Default Settings Refinement
 *   **Date:** [Current Date]
 *   **Completed:**
@@ -41,7 +50,7 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 ---
 
 ### **v2.5.0** - Go-Live Polish & Refactor
-*   **Date:** [Current Date]
+*   **Date:** [Current Date - 1 Day]
 *   **Completed:**
     *   **Refactor:** Centralized all SVG icons into a single `components/ui/Icons.tsx` file to improve code organization and maintainability.
     *   **UX:** Added a confirmation dialog to the "Clear All" button in the Recipe Book to prevent accidental data loss.
@@ -50,7 +59,7 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 ---
 
 ### **v2.4.0** - Recipe Book Enhancements
-*   **Date:** [Current Date]
+*   **Date:** [Current Date - 2 Days]
 *   **Completed:**
     *   **Feature:** Added a search bar to the "Recipe Book" history panel, allowing users to quickly filter their saved prompts by raw idea.
     *   **UX:** Improved the history panel to show a "no results" message when a search yields no matches.
@@ -58,14 +67,14 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 ---
 
 ### **v2.3.1** - Branding Polish
-*   **Date:** [Current Date]
+*   **Date:** [Current Date - 3 Days]
 *   **Completed:**
     *   **Fix:** Updated the application's `favicon.svg` to use the primary "Prompt Cooker" flame icon, ensuring brand consistency in browser tabs and bookmarks.
 
 ---
 
 ### **v2.3.0** - Pre-Launch Polish
-*   **Date:** [Current Date]
+*   **Date:** [Current Date - 4 Days]
 *   **Completed:**
     *   **Feature:** Added an initial example state to demonstrate app functionality to new users immediately upon loading. This provides an instant "a-ha!" moment.
     *   **SEO:** Added Open Graph and Twitter Card meta tags to `index.html` for improved social sharing previews.
@@ -75,7 +84,7 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 ---
 
 ### **v2.2.2** - UI Clarity Overhaul
-*   **Date:** [Current Date]
+*   **Date:** [Current Date - 5 Days]
 *   **Completed:**
     *   **UX Improvement:** Restructured the "Grill Station" panel for better clarity. The main description is now grouped in its own box, and a new "Chef's Tips" section has been added to guide users on how to create effective core prompts.
     *   **UI Polish:** Added the theme's primary color to the "Guide" icon in the header to improve its visibility and create a more cohesive look.
@@ -83,21 +92,21 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 ---
 
 ### **v2.2.0** - Prompt Quality Overhaul
-*   **Date:** [Current Date]
+*   **Date:** [Current Date - 6 Days]
 *   **Completed:**
     *   **CRITICAL FIX:** Re-architected the core system prompt to prevent "leaky abstractions." The AI is now instructed to act as a professional prompt engineer and synthesize a clean prompt based on user settings, rather than filling out a "recipe card." This ensures the final "cooked prompt" is free of any thematic language (e.g., "Chef's Persona," "Flavor Profile") and is ready for professional use in any AI system.
 
 ---
 
 ### **v2.1.1** - UI/UX Polish
-*   **Date:** [Current Date]
+*   **Date:** [Current Date - 7 Days]
 *   **Completed:**
     *   **Improvement:** Updated all tooltips in "The Spice Rack" to explicitly mention the technical setting they control (e.g., "Portion Size (Verbosity)"). This improves clarity for power users without cluttering the main UI.
 
 ---
 
 ### **v2.1.0** - Voice-to-Ingredients
-*   **Date:** [Current Date]
+*   **Date:** [Current Date - 8 Days]
     *   **Feature:** Implemented voice-to-text input in the "Grill Station" using the Web Speech API.
     *   **UI:** Added a microphone icon and dynamic recording state indicator to the main text area. The feature gracefully degrades on unsupported browsers.
     *   **Docs:** Updated all relevant documentation (`HelpModal`, `ROADMAP`, `TECHNICAL_SPECIFICATION`) to include the new voice input feature.
@@ -105,7 +114,7 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 ---
 
 ### **v2.0.0** - The "Prompt Cooker" Re-brand
-*   **Date:** [Current Date - 1 Day]
+*   **Date:** [Current Date - 9 Days]
 *   **Completed:**
     *   **Branding:** Re-branded the entire application from "Prompta" to "Prompt Cooker".
     *   **Theming:** Implemented a new "BBQ" inspired theme with a charcoal and fiery orange color palette. Replaced all icons and visuals to match.
@@ -116,7 +125,7 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 ---
 
 ### **v1.1.0** - Guidance and Branding Pass
-*   **Date:** [Current Date - 2 Days]
+*   **Date:** [Current Date - 10 Days]
 *   **Completed:**
     *   **Feature:** Added a comprehensive "Guide" modal, accessible from the header, explaining all features and tuning settings in detail.
     *   **Fix:** Performed a branding consistency pass, removing a remaining reference to "Oracle" in the Tuning Panel tooltip to align with the "Prompta" and "alchemy" theme.
@@ -124,7 +133,7 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 ---
 
 ### **v1.0.0** - Initial Feature-Rich Release
-*   **Date:** [Current Date - 3 Days]
+*   **Date:** [Current Date - 11 Days]
 *   **Completed:**
     *   **Feature:** Implemented the core AI prompt optimization engine using the Google Gemini API.
     *   **Feature:** Built the advanced Tuning Panel with controls for Persona, Tone, Format, Complexity, and Verbosity.

@@ -171,7 +171,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({
                             } disabled:opacity-50 disabled:cursor-not-allowed`}
                             aria-label={isListening ? "Stop voice input" : "Start voice input"}
                         >
-                            <MicrophoneIcon className="w-5 h-5" />
+                            <MicrophoneIcon className="text-xl" />
                         </button>
                     )}
                 </div>

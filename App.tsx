@@ -29,6 +29,7 @@ const PRELOADED_EXAMPLE: {
 };
 
 const App: React.FC = () => {
+    console.log('App component rendering...'); // Log at the start of component render
     const [userInput, setUserInput] = useState<string>(PRELOADED_EXAMPLE.userInput);
     const [tuningOptions, setTuningOptions] = useState<TuningOptions>(PRELOADED_EXAMPLE.tuningOptions);
     const [generatedPrompt, setGeneratedPrompt] = useState<string>(PRELOADED_EXAMPLE.generatedPrompt);
@@ -40,15 +41,20 @@ const App: React.FC = () => {
     const [isSpeechRecognitionSupported, setIsSpeechRecognitionSupported] = useState(false);
 
     useEffect(() => {
+        console.log('App useEffect triggered.'); // Log at the start of useEffect
         // --- On mount effects ---
         // 1. Check for speech recognition support
         setIsSpeechRecognitionSupported('SpeechRecognition' in window || 'webkitSpeechRecognition' in window);
+        console.log('Speech recognition supported:', 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window);
         
         // 2. Load history from localStorage
         try {
             const storedHistory = localStorage.getItem('promptCookerHistory');
             if (storedHistory) {
                 setHistory(JSON.parse(storedHistory));
+                console.log('History loaded from localStorage.');
+            } else {
+                console.log('No history found in localStorage.');
             }
         } catch (e) {
             console.error("Failed to load history from localStorage", e);
@@ -66,8 +72,11 @@ const App: React.FC = () => {
                 setTuningOptions(parsedRecipe.tuningOptions);
                 setGeneratedPrompt(''); // Clear generated prompt when loading a recipe
                 setError(null);
+                console.log('Recipe loaded from URL:', parsedRecipe);
                  // Remove the query parameter from the URL for a cleaner address bar
                 window.history.replaceState({}, document.title, window.location.pathname);
+            } else {
+                console.log('No recipe found in URL.');
             }
         } catch (e) {
             console.error("Failed to load recipe from URL", e);
@@ -77,6 +86,7 @@ const App: React.FC = () => {
     const saveHistory = (newHistory: HistoryItem[]) => {
         setHistory(newHistory);
         localStorage.setItem('promptCookerHistory', JSON.stringify(newHistory));
+        console.log('History saved:', newHistory);
     };
 
     const handleSaveToHistory = (prompt: string) => {
@@ -89,6 +99,7 @@ const App: React.FC = () => {
         };
         const updatedHistory = [newEntry, ...history].slice(0, 50); // Keep max 50 items
         saveHistory(updatedHistory);
+        console.log('Prompt saved to history:', newEntry);
     };
 
     const handleLoadFromHistory = (item: HistoryItem) => {
@@ -97,16 +108,19 @@ const App: React.FC = () => {
         setGeneratedPrompt(item.generatedPrompt);
         setError(null);
         setIsHistoryPanelOpen(false);
+        console.log('Loaded from history:', item);
     };
 
     const handleDeleteFromHistory = (id: number) => {
         const updatedHistory = history.filter(item => item.id !== id);
         saveHistory(updatedHistory);
+        console.log('Deleted from history:', id);
     };
 
     const handleClearHistory = () => {
         saveHistory([]);
         setIsHistoryPanelOpen(false);
+        console.log('History cleared.');
     };
     
     const handleShare = useCallback(() => {
@@ -115,11 +129,14 @@ const App: React.FC = () => {
         const base64String = btoa(jsonString);
         const url = `https://promptcooker.app/?recipe=${base64String}`;
         navigator.clipboard.writeText(url);
+        console.log('Share URL copied:', url);
     }, [userInput, tuningOptions]);
 
     const handleGenerate = useCallback(async () => {
+        console.log('handleGenerate called.');
         if (!userInput.trim()) {
             setError('Please add an idea to the grill first.');
+            console.warn('Generate attempt failed: User input is empty.');
             return;
         }
         setIsLoading(true);
@@ -130,12 +147,14 @@ const App: React.FC = () => {
             const prompt = await generateOptimizedPrompt(userInput, tuningOptions);
             setGeneratedPrompt(prompt);
             handleSaveToHistory(prompt);
+            console.log('Prompt generated successfully.');
         } catch (e: unknown) {
             const errorMessage = e instanceof Error ? e.message : 'An unknown error occurred.';
             setError(`Failed to cook prompt: ${errorMessage}`);
-            console.error(e);
+            console.error(`Error in generateOptimizedPrompt:`, e); // Log full error object
         } finally {
             setIsLoading(false);
+            console.log('handleGenerate finished. IsLoading:', false);
         }
     }, [userInput, tuningOptions, history]);
 

@@ -79,7 +79,7 @@ export const ColorPicker: React.FC = () => {
                 value={color}
                 onChange={handleColorChange}
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" // Make input cover button
-                aria-hidden="true"
+                // aria-hidden="true" // REMOVED THIS TO FIX ACCESSIBILITY ERROR
             />
         </button>
     );

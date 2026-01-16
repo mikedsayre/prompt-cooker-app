@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 
 const Icon: React.FC<{ name: string; className?: string }> = ({ name, className }) => (
@@ -9,13 +10,13 @@ const Icon: React.FC<{ name: string; className?: string }> = ({ name, className 
 
 export const ColorPaletteIcon: React.FC<{ className?: string }> = ({ className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none">
-        <path d="M12 21.999c-5.523 0-10-4.477-10-10 0-5.5228 4.477-10 10-10 4.437 0 8.224 2.8954 9.513 6.8995" stroke="#a1a1aa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M11.5 3.00104C10.027 3.44004 8.707 4.24604 7.6 5.39104C4.6 8.39104 4.6 13.208 7.6 16.208C10.6 19.208 15.4 19.208 18.4 16.208C19.754 14.854 20.61 13.111 20.919 11.232" stroke="#a1a1aa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="8" cy="8" r="1.5" fill="#ef4444"/>
-        <circle cx="12" cy="7" r="1.5" fill="#3b82f6"/>
-        <circle cx="16" cy="9" r="1.5" fill="#22c55e"/>
-        <circle cx="15" cy="13.5" r="1.5" fill="#f97316"/>
-        <circle cx="10.5" cy="12" r="1.5" fill="#eab308"/>
+        <path d="M12 21.999c-5.523 0-10-4.477-10-10 0-5.5228 4.477-10 10-10 4.437 0 8.224 2.8954 9.513 6.8995" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M11.5 3.00104C10.027 3.44004 8.707 4.24604 7.6 5.39104C4.6 8.39104 4.6 13.208 7.6 16.208C10.6 19.208 15.4 19.208 18.4 16.208C19.754 14.854 20.61 13.111 20.919 11.232" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="8" cy="8" r="1.5" fill="currentColor"/>
+        <circle cx="12" cy="7" r="1.5" fill="currentColor"/>
+        <circle cx="16" cy="9" r="1.5" fill="currentColor"/>
+        <circle cx="15" cy="13.5" r="1.5" fill="currentColor"/>
+        <circle cx="10.5" cy="12" r="1.5" fill="currentColor"/>
     </svg>
 );
 

@@ -4,6 +4,16 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 
 ---
 
+### **v2.5.11** - CRITICAL Fixes: Definitive Importmap Removal, Accessibility & Icon Styling
+*   **Date:** [Current Date]
+*   **Completed:**
+    *   **CRITICAL FIX:** The `<script type="importmap">` block was **definitively removed** from `index.html`. This resolves the underlying module loading and CSS processing conflicts that were preventing the app from displaying its intended styling.
+    *   **CRITICAL FIX:** Removed `aria-hidden="true"` from the `<input type="color">` element within `components/ui/ColorPicker.tsx`. This resolves the console error regarding blocked `aria-hidden` on a focused element, improving accessibility.
+    *   **CRITICAL FIX:** Updated the `ColorPaletteIcon` SVG in `components/ui/Icons.tsx` to use `currentColor` for all its `stroke` and `fill` attributes. This ensures the icon correctly inherits colors from Tailwind CSS utility classes, making it visible and theme-responsive in the header.
+    *   **Documentation:** Updated `PROGRESS.md` to reflect these critical fixes, ensuring all known console errors and styling issues are addressed.
+
+---
+
 ### **v2.5.10** - Gemini Model Update & Image 404 Fix
 *   **Date:** [Current Date]
 *   **Completed:**

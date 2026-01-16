@@ -4,6 +4,14 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 
 ---
 
+### **v2.5.13** - Form Field ID Fix
+*   **Date:** [Current Date]
+*   **Completed:**
+    *   **Fix:** Added `id` attributes to the `textarea` elements in `components/InputPanel.tsx` (id="userInput") and `components/OutputPanel.tsx` (id="cookedPrompt"). This resolves console warnings regarding form field elements missing `id` or `name` attributes, improving accessibility and form behavior.
+    *   **Documentation:** Updated `PROGRESS.md` to reflect this fix.
+
+---
+
 ### **v2.5.12** - CRITICAL Fix: Definitive Importmap Removal & UI Polish
 *   **Date:** [Current Date]
 *   **Completed:**

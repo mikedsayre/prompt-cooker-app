@@ -152,6 +152,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({
                 </div>
                 <div className="relative">
                     <textarea
+                        id="userInput" // Added id
                         value={userInput}
                         onChange={(e) => setUserInput(e.target.value)}
                         placeholder="e.g., 'A three-month marketing plan for a new coffee shop', 'A funny tweet about AI', 'A formal email to my boss'."

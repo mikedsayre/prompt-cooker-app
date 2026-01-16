@@ -80,6 +80,7 @@ export const OutputPanel: React.FC<OutputPanelProps> = ({ prompt, isLoading, err
              return (
                 <div className="relative w-full h-full font-mono text-brand-code-text text-sm md:text-base leading-relaxed border border-brand-border rounded-md overflow-hidden wood-grain-bg min-h-[300px]">
                     <textarea
+                        id="cookedPrompt" // Added id
                         value={editedPrompt}
                         onChange={(e) => setEditedPrompt(e.target.value)}
                         className="absolute inset-0 w-full h-full p-3 bg-transparent border-none focus:ring-0 focus:outline-none resize-none caret-brand-primary text-transparent selection:bg-brand-primary/30"

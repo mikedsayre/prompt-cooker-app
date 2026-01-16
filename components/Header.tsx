@@ -24,6 +24,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleHistory, onToggleHelp })
                             className="w-10 h-10 icon-spin-hover"
                         />
                     </div>
+                    <p className="text-sm md:text-base text-brand-subtle mt-1 ml-1 md:ml-2">Your Recipe for Perfect Prompts</p>
                 </div>
                 <div className="flex items-center gap-2 md:gap-3">
                     {/* <ColorPicker /> */} {/* Removed */}

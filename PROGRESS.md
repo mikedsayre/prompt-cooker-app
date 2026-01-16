@@ -4,6 +4,14 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 
 ---
 
+### **v2.5.14** - Header Tagline Addition
+*   **Date:** [Current Date]
+*   **Completed:**
+    *   **UI/UX:** Added the tagline "Your Recipe for Perfect Prompts" (`<p>` element) under the main title and logo in `components/Header.tsx`. This provides immediate clarity about the app's purpose to users. Styling was applied to match the existing aesthetic, using `text-sm md:text-base text-brand-subtle mt-1 ml-1 md:ml-2`.
+    *   **Documentation:** Updated `PROGRESS.md` to reflect this UI enhancement.
+
+---
+
 ### **v2.5.13** - Form Field ID Fix
 *   **Date:** [Current Date]
 *   **Completed:**

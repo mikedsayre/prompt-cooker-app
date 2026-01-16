@@ -14,9 +14,19 @@ function getAiClient(): GoogleGenAI {
     }
     // Access process.env.API_KEY, which is shimmed by index.html for client-side
     if (!process.env.API_KEY) {
-        // This error is caught by generateOptimizedPrompt and displayed gracefully in the UI.
         throw new Error("API_KEY_MISSING: The API_KEY environment variable is not set.");
     }
+
+    // CRITICAL DIAGNOSIS: If the placeholder is still present, the Vercel build step failed to inject the key.
+    if (process.env.API_KEY === '__VERCEL_GEMINI_API_KEY__') {
+        throw new Error(
+            "API_KEY_NOT_INJECTED: Your Gemini API key placeholder '__VERCEL_GEMINI_API_KEY__' " +
+            "was not replaced during deployment. This usually means the Vercel Build Command " +
+            "(`sed -i \"s|__VERCEL_GEMINI_API_KEY__|$GEMINI_API_KEY|g\" index.html && npx vercel build --prebuilt`) " +
+            "is not correctly configured or your `GEMINI_API_KEY` environment variable is missing on Vercel."
+        );
+    }
+
     ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     return ai;
 }
@@ -97,8 +107,11 @@ export async function generateOptimizedPrompt(userInput: string, options: Tuning
 
     } catch (error) {
         console.error("Gemini API Error in generateOptimizedPrompt:", error);
-        if (error instanceof Error && (error.message.includes('API key') || error.message.includes('API_KEY_MISSING'))) {
-             throw new Error("Invalid or missing API Key. Please check your kitchen's gas line (API key setup).");
+        if (error instanceof Error) {
+             if (error.message.includes('API key') || error.message.includes('API_KEY_MISSING') || error.message.includes('API_KEY_NOT_INJECTED')) {
+                // Re-throw the specific API key error for clearer diagnosis in the UI
+                throw error;
+             }
         }
         throw new Error("The AI service had a kitchen fire. Please check your ingredients and try again.");
     }

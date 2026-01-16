@@ -4,6 +4,18 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 
 ---
 
+### **v2.5.12** - CRITICAL Fix: Definitive Importmap Removal & UI Polish
+*   **Date:** [Current Date]
+*   **Completed:**
+    *   **CRITICAL FIX:** The `<script type="importmap">` block was **definitively removed** from `index.html`. This resolves the underlying module loading and CSS processing conflicts that were preventing the app from displaying its intended styling, finally allowing Vite to manage assets correctly.
+    *   **UI/UX:** Removed the `<ColorPicker />` component from `components/Header.tsx`, eliminating the theme color button from the header navigation as requested. The associated import was also removed.
+    *   **Accessibility:** Confirmed that the `aria-hidden` fix within `components/ui/ColorPicker.tsx` remains, resolving the console error even though the component is no longer rendered in the header.
+    *   **Styling:** Confirmed that the `ColorPaletteIcon` in `components/ui/Icons.tsx` continues to use `currentColor`, ensuring it would be visible and theme-responsive if ever reintroduced.
+    *   **Asset Management:** Confirmed that no image files are being added to the `public/images/` folder; the application continues to rely on static paths to externally managed assets.
+    *   **Documentation:** Updated `PROGRESS.md` to reflect these critical fixes and UI changes.
+
+---
+
 ### **v2.5.11** - CRITICAL Fixes: Definitive Importmap Removal, Accessibility & Icon Styling
 *   **Date:** [Current Date]
 *   **Completed:**

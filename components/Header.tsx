@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeToggle } from './ThemeToggle';
-import { ColorPicker } from './ui/ColorPicker';
+// import { ColorPicker } from './ui/ColorPicker'; // Removed
 import { HistoryIcon, QuestionMarkIcon } from './ui/Icons';
 import { LOGO_PATH } from '../constants';
 
@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleHistory, onToggleHelp })
                     </div>
                 </div>
                 <div className="flex items-center gap-2 md:gap-3">
-                    <ColorPicker />
+                    {/* <ColorPicker /> */} {/* Removed */}
                     <button
                         onClick={onToggleHistory}
                         className="p-2 rounded-full bg-brand-surface hover:bg-brand-border text-brand-subtle hover:text-brand-text transition-colors duration-200 flex items-center justify-center"

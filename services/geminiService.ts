@@ -86,7 +86,7 @@ export async function generateOptimizedPrompt(userInput: string, options: Tuning
         };
 
         const response = await client.models.generateContent({
-            model: "gemini-2.5-flash-preview-04-17",
+            model: "gemini-3-flash-preview", // UPDATED MODEL HERE
             contents: userInput,
             config: recipeConfig,
         });

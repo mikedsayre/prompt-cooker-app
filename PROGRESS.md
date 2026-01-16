@@ -4,6 +4,15 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 
 ---
 
+### **v2.5.10** - Gemini Model Update & Image 404 Fix
+*   **Date:** [Current Date]
+*   **Completed:**
+    *   **CRITICAL FIX:** Updated the Gemini API model in `services/geminiService.ts` from `"gemini-2.5-flash-preview-04-17"` to `"gemini-3-flash-preview"`. This resolves the `ApiError: 404 NOT_FOUND` issue from the Gemini API.
+    *   **CRITICAL FIX:** Added transparent placeholder image files for `public/images/Prompt-Cooker-App-Your-Recipe-For-The-Perfect-Prompts-256px.png` and `public/images/Prompt-Cooker-App-Your-Recipe-For-The-Perfect-Prompts-64px.png`. This resolves the `Failed to load resource: the server responded with a status of 404 ()` errors for static assets.
+    *   **Documentation:** Updated `PROGRESS.md` to reflect these critical fixes.
+
+---
+
 ### **v2.5.9** - CRITICAL Fix: Final Importmap Removal & Full Styling Restoration
 *   **Date:** [Current Date]
 *   **Completed:**

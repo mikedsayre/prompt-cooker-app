@@ -4,6 +4,16 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 
 ---
 
+### **v2.5.15** - CRITICAL Fix: Importmap Removal & SEO Image Update
+*   **Date:** [Current Date]
+*   **Completed:**
+    *   **CRITICAL FIX:** The `<script type="importmap">` block was **definitively removed again** from `index.html`. This is crucial for Vite to correctly handle module loading and CSS processing, resolving persistent styling and functional issues.
+    *   **SEO/Social:** Updated the `og:image` and `twitter:image` meta tags in `index.html` to point to `/images/Prompt-Cooker-App-Your-Recipe-For-The-Perfect-Prompts-256px.png`, ensuring social media previews display the correct branding.
+    *   **Favicon Clarification:** Confirmed that the favicon configuration in `index.html` is correct for a Vite app (expecting the file in `public/images/`). Advised user to verify file existence in `public/images/` and clear browser cache if the favicon is not displaying, as the HTML configuration itself is valid.
+    *   **Documentation:** Updated `PROGRESS.md` to reflect these critical fixes and updates.
+
+---
+
 ### **v2.5.14** - Header Tagline Addition
 *   **Date:** [Current Date]
 *   **Completed:**

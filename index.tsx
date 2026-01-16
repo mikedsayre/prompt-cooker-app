@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App'; // Corrected import path
+import './index.css'; // Import the main CSS file
 
 console.log('index.tsx started'); // Debugging log
 

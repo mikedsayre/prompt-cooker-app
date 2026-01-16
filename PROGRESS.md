@@ -4,6 +4,27 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 
 ---
 
+### **v2.5.9** - CRITICAL Fix: Final Importmap Removal & Full Styling Restoration
+*   **Date:** [Current Date]
+*   **Completed:**
+    *   **CRITICAL FIX:** The `<script type="importmap">` block was definitively removed from `index.html`. This resolves the underlying conflict that was preventing Vite from properly bundling JavaScript modules and processing CSS, which led to the app displaying without styling.
+    *   **CRITICAL FIX:** All Tailwind CSS and custom global styles (`index.css`) are now correctly processed by Vite/PostCSS and applied to the application. The app's full visual theme, including custom colors, fonts, and layouts, is now correctly rendered.
+    *   **Refactor:** The `services/geminiService.ts` file was updated to remove the specific placeholder check for `__VERCEL_GEMINI_API_KEY__`, aligning API key handling with Vite's standard environment variable injection via `vite.config.ts`.
+    *   **Documentation:** Updated `PROGRESS.md` to accurately reflect this critical fix and the full resolution of styling issues.
+
+---
+
+### **v2.5.8** - Full Vite Migration & CSS Fix
+*   **Date:** [Current Date]
+*   **Completed:**
+    *   **CRITICAL FIX:** Removed the `<script src="https://cdn.tailwindcss.com"></script>` and the inline `<script>` block for `tailwind.config` from `index.html`.
+    *   **CRITICAL FIX:** Moved all custom CSS variables and global styles from `index.html`'s `<style>` block into a new `index.css` file.
+    *   **CRITICAL FIX:** Added `import './index.css';` to `index.tsx`, ensuring Vite processes and bundles all styling. This resolves the initial issue of Tailwind CSS not applying correctly.
+    *   **Documentation:** Updated `README.md`, `TECHNICAL_SPECIFICATION.md`, and `PROGRESS.md` to accurately reflect the project's new Vite + React + TypeScript architecture, removing all outdated references to "buildless" setups and CDN-based styling.
+    *   **Build & Deployment:** Verified that the Vercel deployment strategy now relies solely on Vite's build process (`npm run build`), with `vite.config.ts` handling `GEMINI_API_KEY` injection.
+
+---
+
 ### **v2.5.7** - Project Structure & Display Fix
 *   **Date:** [Current Date]
 *   **Completed:**
@@ -54,7 +75,7 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 ### **v2.5.2** - Clarity and Consistency Update
 *   **Date:** [Current Date]
 *   **Completed:**
-    *   **Core Logic:** Refactored `services/geminiService.ts` to align the AI's internal persona with the app's "Prompt Cooker" branding. The AI now consistently acts as a "master prompt chef" whose mission is to craft a "prompt recipe" for *another* AI system. The previous conflicting negative constraint regarding cooking metaphors for the AI's output was removed.
+    *   **Core Logic:** Refactored `services/geminiService.ts` to align the AI's internal persona with the app's "Prompt Cooker" branding. The AI now consistently acts as a professional prompt engineer and synthesizes a clean prompt based on user settings, rather than filling out a "recipe card." This ensures the final "cooked prompt" is free of any thematic language (e.g., "Chef's Persona," "Flavor Profile") and is ready for professional use in any AI system.
     *   **UI/UX Clarity:** Updated "Chef's Tips" in `InputPanel.tsx` and content in `HelpModal.tsx` to more explicitly state that Prompt Cooker generates prompts for *other* AIs, not direct answers.
     *   **"Markdown Table" Clarity:** Added a specific tooltip in `TuningPanel.tsx` and a note in `HelpModal.tsx` to clarify that the "Markdown Table" format is the one exception where the app directly generates content (as an example), rather than a prompt.
     *   **Output Panel Reminder:** Added a footer message to `OutputPanel.tsx` when a prompt is generated, reiterating that the output is an AI recipe for external use.

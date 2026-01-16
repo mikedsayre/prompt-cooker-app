@@ -60,28 +60,32 @@ This panel displays the delicious results of the chef's labor.
 
 ## Setup and Installation
 
-This project is designed to be run in a web environment where the Google Gemini API key is available.
+This project is a React application built with Vite and TypeScript, designed to be run in a web environment where the Google Gemini API key is available.
 
 1.  **Get an API Key:** Obtain an API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
 
-2.  **Vercel Deployment for Buildless React Apps:**
-    *   **Project Structure:** Ensure your React files (`App.tsx`, `index.tsx`, `constants.ts`, `types.ts`, `services/`, `components/`) are in your project root (not nested under `src/`). All import paths must accurately reflect this structure (e.g., `import { Header } from './components/Header';`).
-    *   **`vercel.json`:** Ensure you have a `vercel.json` file in your project root. This is critical for two reasons:
-        *   **Correct MIME Types:** It ensures Vercel serves your `.tsx` and `.ts` files with `Content-Type: application/javascript`, allowing the browser to execute them as ES Modules.
-        *   **Environment Variable Mapping:** For client-side, buildless apps to access `process.env.API_KEY`, Vercel needs to inject this into your `index.html`. Your `vercel.json` should map your Vercel environment variable (e.g., `GEMINI_API_KEY`) to the `env` section.
-    *   **API Key Injection in `index.html` (Crucial for Buildless Apps):** Due to the buildless nature, `process.env.API_KEY` needs to be "shimmed" in the browser. In your `index.html`, a small script tag defines `window.process.env.API_KEY` using a placeholder (`__VERCEL_GEMINI_API_KEY__`).
-        *   You **must** configure your Vercel project's "Build & Development Settings" to include a **Build Command** that replaces this placeholder with your actual `GEMINI_API_KEY` environment variable during deployment.
-        *   **Recommended Build Command:** `sed -i "s|__VERCEL_GEMINI_API_KEY__|$GEMINI_API_KEY|g" index.html && npx vercel build --prebuilt`
-    *   **Environment Variables on Vercel:** Add your Gemini API key to Vercel project environment variables (e.g., `GEMINI_API_KEY`).
+2.  **Local Development:**
+    *   **Install Dependencies:** Run `npm install` in your project root.
+    *   **Environment Variable:** Create a `.env` file in your project root and add your Gemini API key:
+        ```
+        GEMINI_API_KEY=YOUR_GEMINI_API_KEY_HERE
+        ```
+    *   **Run Development Server:** `npm run dev`
+    *   **Build for Production:** `npm run build`
+    *   **Preview Build:** `npm run preview`
 
-3.  **Deployment:** Deploy your project to Vercel. Ensure all files, including `vercel.json`, are pushed to your GitHub repo and correctly picked up by Vercel.
+3.  **Vercel Deployment:**
+    *   **Environment Variable:** Add your Gemini API key to your Vercel project's environment variables. Name the variable `GEMINI_API_KEY`.
+    *   **Build Command:** Vercel should automatically detect the Vite project. The default build command (`npm run build`) is usually sufficient. Our `vite.config.ts` handles the injection of `process.env.API_KEY` using the `GEMINI_API_KEY` from Vercel's environment.
+    *   **Deployment:** Push your changes to your Git repository, and Vercel will automatically deploy the application.
 
 ## Technology Stack
 
 -   **Framework:** React 19
 -   **Language:** TypeScript
--   **Styling:** Tailwind CSS
+-   **Styling:** Tailwind CSS (v3) via PostCSS
 -   **AI:** Google Gemini API (`@google/genai`)
--   **Build:** Buildless (ES Modules via `importmap`)
+-   **Build Tool:** Vite
 -   **Icons:** Material Design Icons and custom SVGs.
 -   **Voice Recognition:** Web Speech API.
+-   **Hosting:** Designed for static file hosting (e.g., Vercel, Netlify).

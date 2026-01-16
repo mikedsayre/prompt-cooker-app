@@ -16,10 +16,10 @@ This document provides a comprehensive technical overview of the Prompt Cooker w
 
 -   **Frontend Framework:** React 19
 -   **Language:** TypeScript
--   **Module Resolution:** ES Modules via `importmap` in `index.html`, sourcing packages from `esm.sh`. This creates a buildless development environment that runs directly in the browser.
+-   **Build Tool:** Vite
 -   **AI Service:** Google Gemini API via the `@google/genai` SDK (`gemini-2.5-flash-preview-04-17` model).
 -   **Voice Recognition:** Web Speech API.
--   **Styling:** Tailwind CSS (v3) via the CDN script. Configuration is done in a `<script>` tag in `index.html`.
+-   **Styling:** Tailwind CSS (v3) via PostCSS. Configuration is done in `tailwind.config.js` and `postcss.config.js`.
 -   **Hosting:** Designed for static file hosting (e.g., Firebase Hosting, Vercel, Netlify).
 
 ---
@@ -43,8 +43,9 @@ This document provides a comprehensive technical overview of the Prompt Cooker w
 
 The project follows a standard component-based architecture.
 
--   `index.html`: The single HTML entry point. Loads fonts, the Tailwind CSS CDN, the `importmap`, and sets up root CSS variables for theming. Also contains a script for `process.env` shim for API key injection.
+-   `index.html`: The single HTML entry point. Loads fonts and serves as the mounting point for the React app.
 -   `index.tsx`: The React application entry point. Renders the `App` component into the DOM.
+-   `index.css`: Contains Tailwind CSS directives and custom global styles.
 -   `App.tsx`: The main component. Manages the application's top-level state and orchestrates the interaction between the other components.
 -   `components`: Contains all React components.
     -   `components/ui`: Contains generic, reusable UI components like `Card.tsx`, `Tooltip.tsx`, `ColorPicker.tsx`, and `Icons.tsx`.
@@ -58,7 +59,11 @@ The project follows a standard component-based architecture.
     -   `services/geminiService.ts`: Contains all logic for interacting with the Google Gemini API.
 -   `types.ts`: Defines shared TypeScript types.
 -   `constants.ts`: Stores shared, static data.
--   `vercel.json`: Vercel-specific configuration for headers (MIME types) and environment variables.
+-   `vite.config.ts`: Vite configuration for bundling and environment variable injection.
+-   `postcss.config.js`: PostCSS configuration for Tailwind CSS.
+-   `tailwind.config.js`: Tailwind CSS configuration.
+-   `package.json`: Project dependencies and scripts.
+-   `vercel.json`: Vercel-specific configuration for deployment.
 
 ---
 
@@ -74,13 +79,13 @@ The project follows a standard component-based architecture.
 
 ## 6. API Integration (`services/geminiService.ts`)
 
--   **Authentication:** The client-side application expects the Gemini API key to be available via `process.env.API_KEY`. For buildless deployments on platforms like Vercel, `index.html` includes a shim script that sets `window.process.env.API_KEY` using a placeholder that needs to be replaced with the actual environment variable during the Vercel build/deployment process. The recommended Vercel build command for this is `sed -i "s|__VERCEL_GEMINI_API_KEY__|$GEMINI_API_KEY|g" index.html && npx vercel build --prebuilt`.
+-   **Authentication:** The client-side application expects the Gemini API key to be available via `process.env.API_KEY`. Vite's configuration (`vite.config.ts`) is set up to inject the `GEMINI_API_KEY` environment variable (typically set in a `.env` file locally or on Vercel) into the client-side bundle as `process.env.API_KEY`.
 -   **`constructSystemPrompt`:** This function dynamically builds a detailed system instruction prompt based on the user's "Spice Rack" settings. This is the core of the "recipe writing" process.
 -   **`generateOptimizedPrompt`:** This function takes the user's input and tuning options and makes a single call to the Gemini API. It uses `constructSystemPrompt` to build a detailed set of meta-instructions that guide the AI to generate a single, high-quality, optimized prompt (the "prompt recipe"). It then returns this final prompt to be displayed to the user. The application's purpose is to *create* prompts, not execute them.
 ---
 
 ## 7. Theming and Styling
 
--   **Engine:** Tailwind CSS.
--   **CSS Variables:** The core color palette is defined using CSS variables in `index.html`, allowing for easy theme switching (Light/Dark and custom accent colors). The theme is inspired by a "BBQ" aesthetic (charcoal, orange).
--   **Icon Alignment:** To ensure precise vertical alignment for font-based icons (Material Symbols), the Tailwind CSS `fontSize` utility classes (`text-xs`, `text-sm`, `text-xl`) are explicitly configured in `index.html` to have a `lineHeight` that precisely matches their `font-size`. This prevents vertical misalignment caused by default browser line heights.
+-   **Engine:** Tailwind CSS, processed by PostCSS via Vite.
+-   **CSS Variables:** The core color palette is defined using CSS variables in `index.css`, allowing for easy theme switching (Light/Dark and custom accent colors). The theme is inspired by a "BBQ" aesthetic (charcoal, orange).
+-   **Icon Alignment:** To ensure precise vertical alignment for font-based icons (Material Symbols), the Tailwind CSS `fontSize` utility classes (`text-xs`, `text-sm`, `text-xl`) are explicitly configured in `tailwind.config.js` to have a `lineHeight` that precisely matches their `font-size`. This prevents vertical misalignment caused by default browser line heights.

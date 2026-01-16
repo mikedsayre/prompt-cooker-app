@@ -2,15 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <script>
-      console.log('index.html loaded (head)');
-      // Shim process.env for client-side buildless apps, injecting API_KEY from Vercel env.
-      // Vercel should be configured to replace __VERCEL_GEMINI_API_KEY__ with the actual API key.
-      window.process = window.process || {};
-      window.process.env = window.process.env || {};
-      window.process.env.API_KEY = '__VERCEL_GEMINI_API_KEY__'; // Placeholder for Vercel injection
-      console.log('API_KEY shimmed (after set):', window.process.env.API_KEY ? 'Present' : 'Missing', 'Value:', window.process.env.API_KEY);
-    </script>
     <link rel="icon" type="image/png" href="/images/Prompt-Cooker-App-Your-Recipe-For-The-Perfect-Prompts-64px.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prompt Cooker - Your Recipe for Perfect Prompts</title>
@@ -206,96 +197,26 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              mono: ['Fira Code', 'monospace'],
-            },
-            colors: {
-              'brand-bg': 'var(--color-bg)',
-              'brand-surface': 'var(--color-surface)',
-              'brand-primary': 'var(--color-primary)',
-              'brand-secondary': 'var(--color-secondary)',
-              'brand-text': 'var(--color-text)',
-              'brand-subtle': 'var(--color-subtle)',
-              'brand-border': 'var(--color-border)',
-              'brand-code-bg': 'var(--color-code-bg)',
-              'brand-code-text': 'var(--color-code-text)',
-              'brand-input-bg': 'var(--color-input-bg)',
-            },
-            fontSize: { /* Explicitly define text sizes to set a matching line-height for better icon alignment */
-                'xs': ['0.75rem', { lineHeight: '0.75rem' }], /* 12px / 12px */
-                'sm': ['0.875rem', { lineHeight: '0.875rem' }], /* 14px / 14px */
-                'xl': ['1.25rem', { lineHeight: '1.25rem' }], /* 20px / 20px */
-            },
-            animation: {
-                'gradient-x': 'gradient-x 5s ease infinite',
-                'fade-in-down': 'fade-in-down 0.3s ease-out forwards',
-                'fade-in': 'fade-in 0.3s ease-out forwards',
-                'scale-up': 'scale-up 0.2s ease-out forwards',
-                'flicker-glow': 'flicker-glow 0.7s ease-in-out',
-            },
-            keyframes: {
-                'gradient-x': {
-                    '0%, 100%': {
-                        'background-size':'200% 200%',
-                        'background-position': 'left center'
-                    },
-                    '50%': {
-                        'background-size':'200% 200%',
-                        'background-position': 'right center'
-                    }
-                },
-                'fade-in-down': {
-                    '0%': {
-                        opacity: '0',
-                        transform: 'translateY(-10px)'
-                    },
-                    '100%': {
-                        opacity: '1',
-                        transform: 'translateY(0)'
-                    },
-                },
-                'fade-in': {
-                    'from': { opacity: '0' },
-                    'to': { opacity: '1' },
-                },
-                'scale-up': {
-                  'from': { opacity: '0.9', transform: 'scale(0.95)' },
-                  'to': { opacity: '1', transform: 'scale(1)' },
-                },
-                'flicker-glow': {
-                    '0%, 100%': {
-                        filter: 'drop-shadow(0 0 0px transparent)',
-                        transform: 'scale(1)'
-                    },
-                    '50%': {
-                        filter: 'drop-shadow(0 0 8px var(--color-glow))',
-                        transform: 'scale(1.05)'
-                    }
-                },
-            },
-            boxShadow: {
-              'glow-primary': '0 0 15px var(--color-glow)',
-            }
-          }
-        }
-      }
+      // The tailwind.config object is now defined in tailwind.config.js
+      // This script is technically redundant if you use a build step with PostCSS/Tailwind,
+      // but kept for compatibility with the CDN approach.
+      // For a full Vite/Tailwind setup, this script would be removed.
     </script>
-  <script type="importmap">
+<script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.1.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
-    "react/": "https://esm.sh/react@^19.1.0/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.7.0"
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
   <body class="bg-brand-bg text-brand-text transition-colors duration-300">
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

@@ -4,6 +4,16 @@ This document serves as a changelog for the Prompt Cooker application, tracking 
 
 ---
 
+### **v2.5.7** - Project Structure & Display Fix
+*   **Date:** [Current Date]
+*   **Completed:**
+    *   **CRITICAL FIX:** Consolidated duplicate files and directories. The project structure is now flattened, with `App.tsx`, `index.tsx`, `types.ts`, `constants.ts`, `components/`, and `services/` residing directly in the project root. All `src/` prefixed duplicates have been effectively removed. This resolves module resolution ambiguities that were preventing the app from displaying.
+    *   **CRITICAL FIX:** Confirmed correct `html` and `body` height (set to `100%`) in `index.html` to ensure the main content area renders visible.
+    *   **Refactor:** Re-verified all internal module import paths to ensure they correctly reflect the consolidated flat project structure.
+    *   **Deployment:** Reaffirmed previous Vercel deployment instructions in `README.md` and `TECHNICAL_SPECIFICATION.md` for API key injection and MIME types, as these are crucial post-structure fix.
+
+---
+
 ### **v2.5.6** - Vercel Deployment & Import Path Fixes
 *   **Date:** [Current Date]
 *   **Completed:**

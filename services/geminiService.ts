@@ -57,7 +57,7 @@ function constructSystemPrompt(options: TuningOptions): string {
     - **Desired AI Tone:** The AI receiving *your* generated prompt should have a "${options.tone}" tone.
     - **Desired AI Format:** The AI receiving *your* generated prompt should output in "${options.format}". If 'Auto', the AI should infer the best format.
     - **Desired AI Verbosity (Detail Level):** The required level of detail for the AI's output is ${options.verbosity}/5, which means: "${verbosityMap[options.verbosity]}".
-    - **Desired AI Complexity (Technical Depth):** The required technical depth for the AI's output is ${options.complexity}/5, which means: "${complexityMap[options.complexity]}".
+    - **Desired AI Complexity (Technical Depth):</label> The required technical depth for the AI's output is ${options.complexity}/5, which means: "${complexityMap[options.complexity]}".
     ${options.negativePrompt ? `- **Desired AI Constraints (Crucial):** The AI receiving *your* generated prompt must strictly avoid the following: "${options.negativePrompt}".` : ''}
     ${highlightInstruction}
     ---

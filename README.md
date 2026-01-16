@@ -65,7 +65,7 @@ This project is designed to be run in a web environment where the Google Gemini 
 1.  **Get an API Key:** Obtain an API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
 
 2.  **Vercel Deployment for Buildless React Apps:**
-    *   **Project Structure:** Ensure your React files (`App.tsx`, `index.tsx`, `constants.ts`, `types.ts`, `services/`, `components/`) are in your project root. All import paths must accurately reflect this structure (e.g., `import { Header } from './components/Header';`).
+    *   **Project Structure:** Ensure your React files (`App.tsx`, `index.tsx`, `constants.ts`, `types.ts`, `services/`, `components/`) are in your project root (not nested under `src/`). All import paths must accurately reflect this structure (e.g., `import { Header } from './components/Header';`).
     *   **`vercel.json`:** Ensure you have a `vercel.json` file in your project root. This is critical for two reasons:
         *   **Correct MIME Types:** It ensures Vercel serves your `.tsx` and `.ts` files with `Content-Type: application/javascript`, allowing the browser to execute them as ES Modules.
         *   **Environment Variable Mapping:** For client-side, buildless apps to access `process.env.API_KEY`, Vercel needs to inject this into your `index.html`. Your `vercel.json` should map your Vercel environment variable (e.g., `GEMINI_API_KEY`) to the `env` section.

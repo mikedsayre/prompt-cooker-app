@@ -9,6 +9,7 @@ This document provides a handover guide to ensure the seamless continued develop
 *   **App Name:** Prompt Cooker
 *   **Purpose:** An AI-powered tool that helps users transform raw ideas into high-quality, effective prompts for other AI systems. The core concept is built around a fun, intuitive "BBQ/cooking" metaphor.
 *   **Current Status:** The application is considered "launch-ready." The UI is polished, core features are stable, branding is consistent, and documentation is up-to-date. The app loads with a pre-filled example to immediately demonstrate its value to new users.
+*   **Structure:** The project has been consolidated to a flat file structure. All `src/` subdirectories for core application code have been removed, with files now residing directly at the project root or within top-level `components/` and `services/` directories.
 
 ---
 
